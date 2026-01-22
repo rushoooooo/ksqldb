@@ -22,7 +22,7 @@ It can also be configured with Basic authentication:
 ```python
 from ksqldb import KSQLdbClient
 
-client = KSQLdbClient('http://localhost:8088', api_key="<KEY>", api_secret="<SECRET>")
+client = KSQLdbClient('http://localhost:8088', api_key="<KEY>", api_secret="<SECRET>", https_cfg="<True/False> or (cert_path, key_path)")
 ```
 
 ## Usage
