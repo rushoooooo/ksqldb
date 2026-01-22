@@ -4,9 +4,9 @@ from ksqldb.api import BaseAPI
 
 
 class KSQLdbClient:
-    def __init__(self, url, api_key=None, api_secret=None):
+    def __init__(self, url, api_key=None, api_secret=None, https_cfg=None):
         self.url = url
-        self.api = BaseAPI(url, api_key, api_secret)
+        self.api = BaseAPI(url, api_key, api_secret, https_cfg=https_cfg)
 
     def get_properties(self):
         properties = self.api.ksql("show properties;")
