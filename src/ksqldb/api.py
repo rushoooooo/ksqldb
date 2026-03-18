@@ -21,8 +21,14 @@ class BaseAPI:
             self.verify = https_cfg
             self.cert = None
         elif isinstance(https_cfg, (list, tuple)):
-            self.verify = True
-            self.cert = https_cfg
+            if len(https_cfg) < 2:
+                raise ValueError("https_cfg must be a list/tuple of at least 2 elements: [cert_path, key_path] or [cert_path, key_path, ca_path]")
+            if len(https_cfg) == 2:
+                self.verify = True
+                self.cert = https_cfg
+            else:
+                self.cert = https_cfg[:2]
+                self.verify = https_cfg[2]
         else:
             raise ValueError("https_cfg must be None, bool, or a list/tuple")
 
